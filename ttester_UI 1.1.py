@@ -23,7 +23,7 @@ class QuizApp:
         self.custom_font_2 = None
         self.root = tk.Tk()
         self.root.geometry("800x600")
-        self.warning_shown = False  # Флаг, показывающий, было ли уже показано предупреждение
+        self.warning_shown = False
         self.initialize_fonts()
         self.create_main_window(first_start=True)
 
