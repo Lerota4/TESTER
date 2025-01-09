@@ -138,14 +138,15 @@ class UI():
         if self.file_path:
             file_name = self.file_path.split("/")[-1]
             self.choose_file_button.config(text=file_name)
+        else:
+            self.choose_file_button.config(text="Выбрать файл")
 
         self.open_file(False)
             
     def open_file(self, start):
         prev_text_from_file = self.text_from_file
-        if self.file_path != "":
-            self.text_from_file = self.quiz.read_file(self.file_path)
-        elif ((prev_text_from_file == self.text_from_file and prev_text_from_file == "") or (prev_text_from_file != "" and self.text_from_file == "")) and not start:
+        self.text_from_file = self.quiz.read_file(self.file_path)
+        if ((prev_text_from_file == self.text_from_file and prev_text_from_file == "") or (prev_text_from_file != "" and self.text_from_file == "")) and not start:
             return False
         elif self.text_from_file != "":
             self.test = self.quiz.parse_quiz(self.text_from_file, self.checkbox_repeat_var.get())
