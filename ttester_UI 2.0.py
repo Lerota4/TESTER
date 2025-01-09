@@ -11,7 +11,8 @@ class QuizApp():
         pass
 
     def parse_quiz(self, text, duplicates=True):
-        blocks = [block.strip() for block in text.strip().split("\n\n") if block.strip()]
+        cleaned_text = re.sub(r"\n\s*\n", "\n\n", text.strip())
+        blocks = [block.strip() for block in cleaned_text.strip().split("\n\n") if block.strip()]
         
         self.questions = []
         seen_questions = set()
